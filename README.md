@@ -1,5 +1,15 @@
 # HavenNode
+## 👥 Group Members & Roles
+* **Project Lead:** Jacob, Mark Lloyd U. (Architecture, Routing, PR Reviews)
+* **UI Developer:** Sabela, Vin Chrysler S. (Component Design, Bootswatch Integration)
+* **Data Engineer:** Escuadra, Shawn Kirby C. (API Integration, Models, Services)
 
+## 📍 Project Scope: HavenNode (Benguet)
+HavenNode is a disaster preparedness and community resource platform specifically focused on the **Benguet** region. It utilizes **Project NOAH** data and **OpenStreetMap** to provide localized hazard monitoring and resource mapping.
+possibility for the addition of the the OpenWeatherApp API
+
+## 🎯 SDG Choice
+**SDG 11: Sustainable Cities and Communities** - Specifically targeting disaster resilience and sustainable urban planning in the local Cordillera context.
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
 
 ## Development server
@@ -57,13 +67,3 @@ Angular CLI does not come with an end-to-end testing framework by default. You c
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-
-## Group Members and  SDG Choice:
-Escuadra, Shawn Kirby C.
-
-Jacob, Mark Lloyd U.
-
-Sabela, Vin Chrysler S.
-
-SDG Choice - SDG11 Sustainable Cities & Communities
