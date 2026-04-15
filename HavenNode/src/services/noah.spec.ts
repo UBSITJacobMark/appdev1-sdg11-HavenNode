@@ -1,6 +1,6 @@
 import { TestBed } from '@angular/core/testing';
 
-import { Noah } from './noah';
+import { Noah } from './noah.service';
 
 describe('Noah', () => {
   let service: Noah;
