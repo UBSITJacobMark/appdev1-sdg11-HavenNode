@@ -61,7 +61,9 @@ For more information on using the Angular CLI, including detailed command refere
 
 ## Group Members and  SDG Choice:
 Escuadra, Shawn Kirby C.
+
 Jacob, Mark Lloyd U.
+
 Sabela, Vin Chrysler S.
 
 SDG Choice - SDG11 Sustainable Cities & Communities
