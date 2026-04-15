@@ -64,4 +64,4 @@ Escuadra, Shawn Kirby C.
 Jacob, Mark Lloyd U.
 Sabela, Vin Chrysler S.
 
-SDG Choice - SDG11 Sustainable Cities & Communities
+SDG Choice - SDG11 (Sustainable Cities & Communities)
