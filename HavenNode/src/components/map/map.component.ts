@@ -22,10 +22,17 @@ export class MapComponent implements AfterViewInit {
       attribution: '&copy; OpenStreetMap'
     }).addTo(this.map);
 
-    // Example marker
-    L.marker([16.4023, 120.5960])
+// 👇 Step 2: Multiple nodes
+    const nodes = [
+    { id: 1, name: 'Flood Risk - Itogon', lat: 16.45, lng: 120.63 },
+    { id: 2, name: 'Safe Zone - Baguio', lat: 16.4023, lng: 120.5960 },
+    { id: 3, name: 'Landslide Alert - Tuba', lat: 16.52, lng: 120.55 }
+  ];
+
+    nodes.forEach(node => {
+    L.marker([node.lat, node.lng])
       .addTo(this.map)
-      .bindPopup('Baguio City')
-      .openPopup();
+      .bindPopup(node.name);
+    });
   }
 }
