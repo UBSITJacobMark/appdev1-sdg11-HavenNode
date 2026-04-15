@@ -6,7 +6,7 @@ import { NotFoundComponent } from '../pages/not-found/not-found'; // ✅ Match c
 import { About } from '../pages/about/about';
 
 export const routes: Routes = [
-    {path: 'about', component: About}
+    {path: 'about', component: About},
 
     { path: '', component: HomeComponent },
     { path: 'dashboard', component: DashboardComponent },

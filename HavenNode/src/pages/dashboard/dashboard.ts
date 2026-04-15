@@ -1,11 +1,12 @@
 import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { NoahService } from '../../services/noah.service';
+import { MapComponent } from '../../components/map/map.component';
 
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, MapComponent],
   templateUrl: './dashboard.html',
   styleUrls: ['./dashboard.css']
 })
