@@ -28,11 +28,12 @@
 
   .card-container > .card:nth-child(2) {
     width: 40rem;
+    height: 70rem;
     
   }
 
   .card-header {
-    background: #1e3a5f;
+    background: #F49C2C;;
     color: white;
     padding: 15px;
     margin: 0;
@@ -59,7 +60,13 @@
     padding: 10px;
   }
   
-
+  .card-text2 {
+    color: #333;
+    font-size: 20px;
+    padding: 10px;
+  }
+  
+  
   .card-link {
     margin-right: 10px;
     text-decoration: none;
