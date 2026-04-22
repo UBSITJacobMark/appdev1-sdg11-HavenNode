@@ -28,7 +28,7 @@
 
   .card-container > .card:nth-child(2) {
     width: 40rem;
-    height: 20rem;
+    
   }
 
   .card-header {
@@ -36,6 +36,7 @@
     color: white;
     padding: 15px;
     margin: 0;
+    font-size: 20px;
   }
   
 
