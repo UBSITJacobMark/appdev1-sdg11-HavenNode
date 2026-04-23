@@ -1,3 +1,4 @@
+
 .card-container {
   display: flex;
   justify-content: center;
@@ -14,45 +15,141 @@
   background-attachment: scroll;
 }
 
-.card {
-  background: rgba(255, 255, 255, 0.95);
-  border: 1px solid #ddd;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
-  overflow: hidden;
-  font-family: Arial, sans-serif;
-  display: flex;
-  flex-direction: column;
-  z-index: 1;
+/* =========================================
+   2. CARD 1 (SDG 11 INFO)
+   ========================================= */
+.card-container > .card:nth-child(1) {
+  width: 50rem;         /* CHANGE SIZE HERE */
+  margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
+  margin-left: 0px;     /* CHANGE HORIZONTAL LOCATION */
+  margin-right: 20rem;    /* CHANGE HORIZONTAL LOCATION */
+  
+}
+/* Header of card 1 (SDG 11) */
+.card-container > .card:nth-child(1) .card-header {
+  border-bottom: none;          /* Removes any bottom border */
+  border-bottom-left-radius: 0;  /* Makes the bottom corners square */
+  border-bottom-right-radius: 0; /* Makes the bottom corners square */
+  margin-bottom: 0;             /* Ensures no gap below the header */
+  font-family: 'Impact', charcoal, sans-serif; /* Example of a bold font */
+  letter-spacing: 1px;
+
 }
 
-.card-header {
-  background: #F49C2C;
-  color: white;
-  padding: 15px;
-  font-size: 20px;
+/* Text of card 1 */
+.card-container > .card:nth-child(1) .card-body {
+  font-family: 'Georgia', serif; /* Example of a professional serif font */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  padding-top: 1rem; 
+  
+  padding-bottom: 0rem;
 }
-
-.card-container > .card:nth-child(1) { 
-  width: 60rem; 
+.card-container > .card:nth-child(1) .card-body:first-of-type {
+  padding: 0;
+  display: none;
+  
 }
-
 .card:nth-child(1) img {
   width: 100%;
-  height: 350px;
+  height: 20rem;
   object-fit: contain;
   background: #f49c2c; 
 }
 
-.card-container > .card:nth-child(2) { 
-  width: 40rem; 
+/* =========================================
+   CAR ANIMATION
+   ========================================= */
+
+/* Shared Track Styles */
+.animation-track {
+  position: absolute;
+  width: 92%;
+  pointer-events: none;
+  z-index: 0;
 }
 
-.card-3 { 
-  width: 80rem; 
-  border-top: 5px solid #F49C2C; 
+.car {
+  font-size: 50px;
+  position: absolute;
+  white-space: nowrap;
+}
+.plane-track {
+  position: absolute;
+  width: 100%;
+  top: 10%; /* High in the sky */
+  pointer-events: none;
+  z-index: 0;
 }
 
+.plane {
+  font-size: 30px;
+  position: absolute;
+  animation: fly-across 25s linear infinite; /* Slower than cars */
+}
+
+@keyframes fly-across {
+  0% { left: -10%; transform: scaleX(1); }
+  100% { left: 110%; transform: scaleX(1); }
+}
+/* --- INDIVIDUAL TRACK POSITIONS --- */
+.track-1 { top: 51rem; } /* Your Original Position */
+.track-2 { top: 52.5rem; } /* New Car 2 Position */
+.track-3 { top: 54rem; } /* New Car 3 Position */
+
+/* --- CAR SETTINGS --- */
+
+/* Car 1: Your Original (Moves Right, Faces Left) */
+.car-1 {
+  animation: drive-right 10s linear infinite;
+}
+
+/* Car 2: Moves Left, Faces Left */
+.car-2 {
+  animation: drive-left 8s linear infinite;
+}
+
+/* Car 3: Moves Right, Faces Right */
+.car-3 {
+  animation: drive-right 12s linear infinite;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes drive-right {
+  0% {
+    left: -100px;
+    transform: scaleX(-1); /* Faces Left by default based on your code */
+  }
+  100% {
+    left: 100%;
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes drive-left {
+  0% {
+    right: -100px;
+    transform: scaleX(1); /* Faces Left naturally */
+  }
+  100% {
+    right: 100%;
+    transform: scaleX(1);
+  }
+}
+
+
+/* =========================================
+   3. CARD 2 (PROJECT SCOPE / HAVENNODE)
+   ========================================= */
+.card-container > .card:nth-child(2) {
+  width: 30rem;         /* CHANGE SIZE HERE */
+  margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
+  margin-left: 15rem;     /* CHANGE HORIZONTAL LOCATION */
+}
+
+/* Specific styles for Card 2 (Separated Header Look) */
 .project-card {
   background: transparent;
   border: none;
@@ -73,6 +170,15 @@
   backdrop-filter: blur(8px);
 }
 
+/* =========================================
+   4. CARD 3 (THE TARGETS GRID)
+   ========================================= */
+.card-3 {
+  width: 80rem;         /* CHANGE SIZE HERE */
+  margin-top: 10rem;     /* CHANGE VERTICAL LOCATION */
+  border-top: 10px solid #F49C2C; /* Fixed the giant 20rem border */
+}
+
 .targets-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); 
@@ -80,36 +186,36 @@
   padding: 20px;
 }
 
-.target-item {
+/* =========================================
+   5. SHARED STYLES (DO NOT NEED TO EDIT OFTEN)
+   ========================================= */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
   display: flex;
-  gap: 15px;
+  flex-direction: column;
+  z-index: 1;
 }
 
-.target-icon-small {
-  width: 100px;
-  height: auto;
-  transition: transform 0.3s ease;
+.card-header {
+  background: #F49C2C;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
 }
 
-.target-icon-small:hover { 
-  transform: scale(1.1); 
-}
-
-.tech-spec span {
-  font-family: 'Courier New', monospace;
-  background: #222;
-  color: #4CAF50;
-  padding: 2px 6px;
-  border-radius: 4px;
-}
+.target-item { display: flex; gap: 15px; }
+.target-icon-small { width: 100px; height: auto; transition: transform 0.3s ease; }
+.target-icon-small:hover { transform: scale(1.1); }
+.tech-spec span { font-family: 'Courier New', monospace; background: #222; color: #4CAF50; padding: 2px 6px; border-radius: 4px; }
 
 @media (max-width: 1000px) {
-  .targets-grid {
-    grid-template-columns: 1fr;
-  }
+  .targets-grid { grid-template-columns: 1fr; }
   .card-container > .card:nth-child(1),
   .card-container > .card:nth-child(2),
-  .card-3 {
-    width: 100%;
-  }
+  .card-3 { width: 100%; }
 }
