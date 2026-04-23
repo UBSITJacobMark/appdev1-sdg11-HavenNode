@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { NodeDetail } from './node-detail';
+import { NodeDetail } from './node-detail.component';
 
 describe('NodeDetail', () => {
   let component: NodeDetail;
