@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, inject, effect, NgZone } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router'; // <-- ADDED ROUTING IMPORTS
 import { DisasterStateFacade, HazardType } from '../../services/disaster-state.facade';
 import { WeatherService } from '../../services/weather.service';
 import { MapComponent } from '../../components/map/map.component';
@@ -7,117 +8,125 @@ import { MapComponent } from '../../components/map/map.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
-  imports: [CommonModule, MapComponent],
+  imports: [CommonModule, MapComponent, RouterLink, RouterLinkActive], // <-- ADDED TO IMPORTS
   template: `
-    <div class="container-fluid dashboard-layout bg-light">
-      <div class="row h-100 g-3 py-3 px-2">
-        
-        <!-- Sidebar -->
-        <div class="col-md-4 col-lg-3 d-flex flex-column gap-3 sidebar-scroll">
-          
-          <!-- Header / Branding -->
-          <div class="d-flex flex-column mb-1">
-            <div class="d-flex align-items-center">
-              <div class="status-pip me-2" [class.live]="mapComp?.isReady()"></div>
-              <h5 class="fw-bold mb-0 text-primary tracking-widest text-uppercase">GHIS Command</h5>
-            </div>
-            <div class="x-small text-muted text-uppercase mt-1 fw-bold">Benguet DRRM Protocol</div>
+    <div class="vh-100 d-flex flex-column dashboard-layout bg-light">
+      
+      <nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm z-index-header px-3 py-2">
+        <div class="container-fluid">
+          <div class="d-flex align-items-center">
+            <div class="status-pip me-3" [class.live]="mapComp?.isReady()"></div>
+            <a class="navbar-brand fw-bold tracking-widest text-uppercase" routerLink="/">HavenNode</a>
           </div>
-
-          <!-- Risk Status Card -->
-          @if (facade.hazardState(); as data) {
-            <div class="card shadow-sm border-0" [ngClass]="facade.riskColorClass()">
-              <div class="card-body text-center py-4">
-                <h6 class="text-uppercase fw-bold opacity-75 mb-1">Benguet Risk Status</h6>
-                <h3 class="fw-bold mb-0">{{ facade.riskLevel() }}</h3>
-                <div class="small fw-bold mt-2 opacity-75">Score: {{ facade.riskScore() }}/100</div>
-              </div>
+      
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+      
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="navbar-nav me-auto">
+              <a class="nav-link fw-bold" routerLink="/dashboard" routerLinkActive="active">Map</a>
+              <a class="nav-link fw-bold" routerLink="/about" routerLinkActive="active">About</a>
             </div>
-
-            <!-- Layer Controls (Cosmo Styled) -->
-            <div class="card border-0 shadow-sm mt-2">
-              <div class="card-header bg-primary text-white fw-bold small text-uppercase">Intelligence Layers</div>
-              <div class="card-body p-3">
-                <div class="d-grid gap-2">
-                  <button class="btn btn-sm text-start px-3 fw-bold" 
-                    [class.btn-primary]="facade.activeHazard() === 'none'"
-                    [class.btn-outline-primary]="facade.activeHazard() !== 'none'"
-                    (click)="setHazard('none')">
-                    Standard Topography
-                  </button>
-                  <button class="btn btn-sm text-start px-3 fw-bold" 
-                    [class.btn-primary]="facade.activeHazard() === 'precipitation'"
-                    [class.btn-outline-primary]="facade.activeHazard() !== 'precipitation'"
-                    (click)="setHazard('precipitation')">
-                    Rain Radar (RainViewer)
-                  </button>
-                  <button class="btn btn-sm text-start px-3 fw-bold" 
-                    [class.btn-primary]="facade.activeHazard() === 'wind'"
-                    [class.btn-outline-primary]="facade.activeHazard() !== 'wind'"
-                    (click)="setHazard('wind')">
-                    Wind Vectors (ECMWF)
-                  </button>
-                  <button class="btn btn-sm text-start px-3 fw-bold" 
-                    [class.btn-primary]="facade.activeHazard() === 'temperature'"
-                    [class.btn-outline-primary]="facade.activeHazard() !== 'temperature'"
-                    (click)="setHazard('temperature')">
-                    Thermal Heatmap (Local)
-                  </button>
-                </div>
-              </div>
-            </div>
-
-            <!-- Live Telemetry Readout -->
-            <div class="card border-0 shadow-sm mt-auto">
-              <div class="card-header bg-dark text-white fw-bold small text-uppercase">Live Telemetry</div>
-              <div class="card-body p-3 bg-white">
-                <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">TEMP:</span><span class="fw-bold">{{ facade.hazardState().temperature | number:'1.1-1' }}°C</span></div>
-                <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">WIND:</span><span class="fw-bold">{{ facade.hazardState().windSpeed | number:'1.1-1' }}km/h</span></div>
-                <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">RAIN:</span><span class="fw-bold">{{ facade.hazardState().precipitation | number:'1.1-1' }}mm/h</span></div>
-                <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">HUMIDITY:</span><span class="fw-bold">{{ facade.hazardState().humidity | number:'1.0-0' }}%</span></div>
-                <div class="d-flex justify-content-between small"><span class="text-muted fw-bold">PRESSURE:</span><span class="fw-bold">{{ facade.hazardState().pressure | number:'1.0-0' }}hPa</span></div>
-              </div>
-            </div>
-          }
+          </div>
         </div>
+      </nav>
 
-        <!-- Map Area -->
-        <div class="col-md-8 col-lg-9 h-100 position-relative">
-          <div class="card h-100 shadow-sm border-0 overflow-hidden map-wrapper">
-            <app-map #mapComp></app-map>
-
-            <!-- Cosmo Styled Layer HUD -->
-            @if (facade.activeHazard() !== 'none') {
-              <div class="hud-box position-absolute top-0 end-0 m-3 p-3 bg-white border-start border-4 border-primary shadow-lg animate-slide-in rounded-1">
-                <div class="d-flex justify-content-between align-items-center mb-1">
-                  <h6 class="small fw-bold text-primary text-uppercase mb-0 tracking-widest">{{ facade.activeHazard() }} SCAN</h6>
-                  <span class="badge bg-success text-white x-small">LIVE</span>
+      <div class="container-fluid flex-grow-1 overflow-hidden">
+        <div class="row h-100 g-3 py-3 px-1">
+          
+          <div class="col-md-4 col-lg-3 d-flex flex-column gap-3 sidebar-scroll">
+            
+            @if (facade.hazardState(); as data) {
+              <div class="card shadow-sm border-0" [ngClass]="facade.riskColorClass()">
+                <div class="card-body text-center py-4">
+                  <h6 class="text-uppercase fw-bold opacity-75 mb-1">Benguet Risk Status</h6>
+                  <h3 class="fw-bold mb-0">{{ facade.riskLevel() }}</h3>
+                  <div class="small fw-bold mt-2 opacity-75">Score: {{ facade.riskScore() }}/100</div>
                 </div>
-                <div class="x-small text-muted fst-italic">
-                  {{ 
-                    facade.activeHazard() === 'precipitation' ? 'Syncing RainViewer API...' : 
-                    facade.activeHazard() === 'wind' ? 'Rendering ECMWF Vector Arrows...' :
-                    'Generating Local Spatial Interpolation...' 
-                  }}
+              </div>
+
+              <div class="card border-0 shadow-sm mt-2">
+                <div class="card-header bg-dark text-white fw-bold small text-uppercase">Intelligence Layers</div>
+                <div class="card-body p-3">
+                  <div class="d-grid gap-2">
+                    <button class="btn btn-sm text-start px-3 fw-bold" 
+                      [class.btn-primary]="facade.activeHazard() === 'none'"
+                      [class.btn-outline-primary]="facade.activeHazard() !== 'none'"
+                      (click)="setHazard('none')">
+                      Standard Topography
+                    </button>
+                    <button class="btn btn-sm text-start px-3 fw-bold" 
+                      [class.btn-primary]="facade.activeHazard() === 'precipitation'"
+                      [class.btn-outline-primary]="facade.activeHazard() !== 'precipitation'"
+                      (click)="setHazard('precipitation')">
+                      Rain Radar (RainViewer)
+                    </button>
+                    <button class="btn btn-sm text-start px-3 fw-bold" 
+                      [class.btn-primary]="facade.activeHazard() === 'wind'"
+                      [class.btn-outline-primary]="facade.activeHazard() !== 'wind'"
+                      (click)="setHazard('wind')">
+                      Wind Vectors (ECMWF)
+                    </button>
+                    <button class="btn btn-sm text-start px-3 fw-bold" 
+                      [class.btn-primary]="facade.activeHazard() === 'temperature'"
+                      [class.btn-outline-primary]="facade.activeHazard() !== 'temperature'"
+                      (click)="setHazard('temperature')">
+                      Thermal Heatmap (Local)
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <div class="card border-0 shadow-sm mt-auto">
+                <div class="card-header bg-secondary text-dark fw-bold small text-uppercase border-bottom">Live Telemetry</div>
+                <div class="card-body p-3 bg-white">
+                  <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">TEMP:</span><span class="fw-bold">{{ facade.hazardState().temperature | number:'1.1-1' }}°C</span></div>
+                  <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">WIND:</span><span class="fw-bold">{{ facade.hazardState().windSpeed | number:'1.1-1' }}km/h</span></div>
+                  <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">RAIN:</span><span class="fw-bold">{{ facade.hazardState().precipitation | number:'1.1-1' }}mm/h</span></div>
+                  <div class="d-flex justify-content-between small mb-2"><span class="text-muted fw-bold">HUMIDITY:</span><span class="fw-bold">{{ facade.hazardState().humidity | number:'1.0-0' }}%</span></div>
+                  <div class="d-flex justify-content-between small"><span class="text-muted fw-bold">PRESSURE:</span><span class="fw-bold">{{ facade.hazardState().pressure | number:'1.0-0' }}hPa</span></div>
                 </div>
               </div>
             }
           </div>
+
+          <div class="col-md-8 col-lg-9 h-100 position-relative">
+            <div class="card h-100 shadow-sm border-0 overflow-hidden map-wrapper">
+              <app-map #mapComp></app-map>
+
+              @if (facade.activeHazard() !== 'none') {
+                <div class="hud-box position-absolute top-0 end-0 m-3 p-3 bg-white border-start border-4 border-primary shadow-lg animate-slide-in rounded-1">
+                  <div class="d-flex justify-content-between align-items-center mb-1">
+                    <h6 class="small fw-bold text-primary text-uppercase mb-0 tracking-widest">{{ facade.activeHazard() }} SCAN</h6>
+                    <span class="badge bg-success text-white x-small">LIVE</span>
+                  </div>
+                  <div class="x-small text-muted fst-italic">
+                    {{ 
+                      facade.activeHazard() === 'precipitation' ? 'Syncing RainViewer API...' : 
+                      facade.activeHazard() === 'wind' ? 'Rendering ECMWF Vector Arrows...' :
+                      'Generating Local Spatial Interpolation...' 
+                    }}
+                  </div>
+                </div>
+              }
+            </div>
+          </div>
+          
         </div>
-        
       </div>
     </div>
   `,
   styles: [`
-    .dashboard-layout { height: 100vh; overflow: hidden; background-color: #f8f9fa; font-family: var(--bs-font-sans-serif); }
-    .sidebar-scroll { max-height: 100%; overflow-y: auto; z-index: 100; scrollbar-width: thin; }
+    .dashboard-layout { font-family: var(--bs-font-sans-serif); }
+    .sidebar-scroll { max-height: 100%; overflow-y: auto; z-index: 100; scrollbar-width: thin; padding-bottom: 1rem; }
     .map-wrapper { z-index: 1; position: relative; }
     
-    .tracking-widest { letter-spacing: 0.2em; }
+    .tracking-widest { letter-spacing: 0.15em; }
     .x-small { font-size: 0.7rem; }
     
-    .status-pip { width: 10px; height: 10px; border-radius: 50%; background: #dc3545; transition: background 0.3s; }
-    .status-pip.live { background: #28a745; box-shadow: 0 0 6px rgba(40, 167, 69, 0.6); }
+    .status-pip { width: 12px; height: 12px; border-radius: 50%; background: #dc3545; transition: background 0.3s; box-shadow: inset 0 0 2px rgba(0,0,0,0.5); }
+    .status-pip.live { background: #28a745; box-shadow: 0 0 8px rgba(40, 167, 69, 0.8), inset 0 0 2px rgba(0,0,0,0.5); }
     
     .hud-box { z-index: 200; min-width: 240px; }
     .animate-slide-in { animation: slideIn 0.4s cubic-bezier(0, 0.5, 0.5, 1); }
@@ -125,6 +134,7 @@ import { MapComponent } from '../../components/map/map.component';
     /* Cosmo-specific adjustments */
     .card { border-radius: 6px; }
     .btn { border-radius: 4px; }
+    .z-index-header { z-index: 300; }
     
     @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
   `]
@@ -197,7 +207,6 @@ export class DashboardComponent implements OnInit {
         return;
       }
 
-      // 🌪 OPTIMIZED WIND FIELD (GEOJSON VECTOR ARROWS)
       if (type === 'wind') {
         const baseSpeed = this.facade.hazardState().windSpeed;
         const baseDir = this.facade.hazardState().windDirection;
@@ -207,7 +216,6 @@ export class DashboardComponent implements OnInit {
         const baseV = baseSpeed * Math.sin(rad);
 
         const gridSize = 40;
-        // Optimization: High-performance 1D Flat Arrays for memory speed
         const uFlat = new Float32Array(gridSize * gridSize);
         const vFlat = new Float32Array(gridSize * gridSize);
 
@@ -227,7 +235,6 @@ export class DashboardComponent implements OnInit {
           [121.5, 17.5] 
         ];
 
-        // Renders directly using MapLibre's native GPU layer
         map.renderWindArrows(uFlat, vFlat, gridSize, bounds);
         return;
       }
