@@ -1,1 +1,83 @@
-<p>temperature works!</p>
+<div class="hazard-mission-layout h-100 d-flex flex-column bg-black overflow-hidden">
+  
+  <!-- Mission Header -->
+  <header class="mission-header p-3 d-flex justify-content-between align-items-center border-bottom border-secondary shadow-lg">
+    <div class="d-flex align-items-center">
+      <div class="status-pip me-3" [class.ready]="mapComp?.isReady"></div>
+      <div>
+        <h1 class="h6 mb-0 fw-bold text-white tracking-widest text-uppercase">Benguet Thermal Mission</h1>
+        <small class="text-purple x-small tracking-wider uppercase">Regional Focus: Baguio City & Greater Benguet Basin</small>
+      </div>
+    </div>
+    
+    <div class="d-flex gap-2 align-items-center">
+      <div class="header-stat px-3 border-end border-secondary text-end">
+        <div class="x-small text-muted uppercase">Model Engine</div>
+        <div class="fw-bold small text-purple text-uppercase">Graphcast AI</div>
+      </div>
+      <div class="header-stat px-3 border-end border-secondary text-end d-none d-md-block">
+        <div class="x-small text-muted uppercase">Sync Status</div>
+        <div class="fw-bold small" [class.text-success]="mapComp?.isReady" [class.text-danger]="!mapComp?.isReady">
+          {{ mapComp?.isReady ? 'ACTIVE' : 'INITIALIZING' }}
+        </div>
+      </div>
+      <a routerLink="/dashboard" class="btn btn-outline-light btn-sm px-3 tracking-widest uppercase">
+        Exit Mission
+      </a>
+    </div>
+  </header>
+
+  <!-- Main Viewport -->
+  <main class="flex-grow-1 position-relative d-flex flex-column">
+    <div class="map-anchor flex-grow-1 w-100 h-100">
+      <app-map #mapComp [center]="benguetCenter"></app-map>
+    </div>
+    
+    <!-- Legend Overlay -->
+    <div class="analysis-legend position-absolute bottom-0 start-0 m-4 p-4 bg-black border border-secondary shadow-lg">
+      <div class="d-flex justify-content-between align-items-center mb-2">
+        <h6 class="x-small fw-bold text-purple tracking-wider text-uppercase mb-0">Regional Thermal Gradient (°C)</h6>
+        <span class="badge bg-purple text-white x-small">BENGUET-WIDE</span>
+      </div>
+      <div class="thermal-gradient w-100 mb-2"></div>
+      <div class="d-flex justify-content-between x-small text-muted font-monospace">
+        <span>-20°C</span>
+        <span>0°C</span>
+        <span>+20°C</span>
+        <span>+40°C</span>
+      </div>
+      <hr class="border-secondary my-3">
+      <div class="d-flex align-items-start">
+        <i class="bi bi-geo-alt text-purple me-2 x-small"></i>
+        <p class="x-small text-muted mb-0 italic leading-snug">
+          Monitoring Urban Heat Island in Baguio vs high-altitude frost risk in Northern Benguet.
+        </p>
+      </div>
+    </div>
+
+    <!-- HUD Telemetry -->
+    <div class="telemetry-hud position-absolute top-0 end-0 m-4 p-3 bg-black bg-opacity-75 border border-secondary text-white">
+      <div class="mb-3 border-bottom border-secondary pb-1">
+        <span class="x-small fw-bold tracking-widest opacity-50">PROVINCIAL TELEMETRY</span>
+      </div>
+      <div class="d-flex flex-column gap-2">
+        <div class="d-flex justify-content-between gap-4">
+          <span class="x-small text-muted uppercase">Focus Area:</span>
+          <span class="x-small fw-bold text-info">Baguio & La Trinidad</span>
+        </div>
+        <div class="d-flex justify-content-between gap-4">
+          <span class="x-small text-muted uppercase">Resolution:</span>
+          <span class="x-small fw-bold">0.25° (AI-Ensemble)</span>
+        </div>
+        <div class="d-flex justify-content-between gap-4">
+          <span class="x-small text-muted uppercase">Data Stream:</span>
+          <span class="x-small fw-bold" [class.text-success]="mapComp?.isReady">CONNECTED</span>
+        </div>
+        <div class="d-flex justify-content-between gap-4">
+          <span class="x-small text-muted uppercase">Regional Center:</span>
+          <span class="x-small fw-bold text-purple">16.41 / 120.59</span>
+        </div>
+      </div>
+    </div>
+  </main>
+</div>
