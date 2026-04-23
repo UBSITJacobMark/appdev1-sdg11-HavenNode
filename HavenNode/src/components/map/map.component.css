@@ -1,4 +1,15 @@
-#map {
-    height: 100vh;
-    width: 100%;
-  }
+.map-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  min-height: 500px; /* Base height fallback */
+  background-color: #e9ecef; /* Placeholder color before tiles load */
+}
+
+.map-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+}
