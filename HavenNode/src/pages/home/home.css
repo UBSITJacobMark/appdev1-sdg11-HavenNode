@@ -5,10 +5,17 @@
   gap: 4rem; 
   padding: 40px;
   flex-wrap: wrap;
+  min-height: 100vh;
+  position: relative;
+  background-image: url('../../assets/background-image.jpg');
+  background-size: 100% 103vh; 
+  background-position: center -80px;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
 }
 
 .card {
-  background: #ffffff;
+  background: rgba(255, 255, 255, 0.95);
   border: 1px solid #ddd;
   border-radius: 10px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
@@ -16,6 +23,7 @@
   font-family: Arial, sans-serif;
   display: flex;
   flex-direction: column;
+  z-index: 1;
 }
 
 .card-header {
@@ -25,168 +33,83 @@
   font-size: 20px;
 }
 
-.card-body {
-  padding: 15px;
+.card-container > .card:nth-child(1) { 
+  width: 60rem; 
 }
-
-.card-text, .card-text2 {
-  color: #333;
-  font-size: 20px;
-  padding: 10px;
-}
-
-
-.card-container > .card:nth-child(1) {
-  width: 60rem;
-}
-
 
 .card:nth-child(1) img {
   width: 100%;
-  height: 30rem;
+  height: 350px;
   object-fit: contain;
-  display: block;
-  background: #f4f4f4;
+  background: #f49c2c; 
 }
 
-
-.card-container > .card:nth-child(2) {
-  width: 40rem;
-  height: 70rem;
+.card-container > .card:nth-child(2) { 
+  width: 40rem; 
 }
 
-.section-title {
-  color: #F49C2C;
-  font-weight: bold;
-  margin-top: 10px;
+.card-3 { 
+  width: 80rem; 
+  border-top: 5px solid #F49C2C; 
 }
 
-
-
-.card-3 {
-  width: 80rem;
-  border-top: 5px solid #F49C2C;
-}
-.card-3 title {
-  font-size: 24px;
-  font-weight: bold;
-  margin-bottom: 15px;
+.project-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  gap: 12px;
 }
 
-.target-img {
-  width: 180px !important;   
-  height: auto !important;  
-  display: block;
-  margin: 15px 0;
-  background: transparent !important; 
+.project-card .card-header {
+  width: 100%; 
+  border-radius: 8px;
+  box-sizing: border-box;
 }
 
-.custom-img {
-  width: 100px !important;
-  height: auto !important;
-  margin: 10px;
-  border-radius: 5px;
+.project-card .card-body {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  backdrop-filter: blur(8px);
 }
-
-.card-3 ul {
-  list-style: none;
-  padding: 0;
-}
-
-.card-3 li {
-  font-size: 1.1rem;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-}
-
-
-
-
 
 .targets-grid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr)); 
-  gap: 40px 30px; 
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px; 
   padding: 20px;
-  align-items: start;
 }
-
 
 .target-item {
   display: flex;
-  align-items: flex-start;
   gap: 15px;
-
-  min-width: 0; 
 }
-
 
 .target-icon-small {
-  width: 100px !important; 
-  height: auto !important;
-
-  flex-shrink: 0; 
-  background: transparent !important;
-
-  transition: transform 0.3s ease-in-out;
-  cursor: pointer;
+  width: 100px;
+  height: auto;
+  transition: transform 0.3s ease;
 }
 
-
-.target-icon-small:hover {
-  transform: scale(1.15); 
+.target-icon-small:hover { 
+  transform: scale(1.1); 
 }
 
-
-.target-content {
-  flex: 1;
-  min-width: 0;
+.tech-spec span {
+  font-family: 'Courier New', monospace;
+  background: #222;
+  color: #4CAF50;
+  padding: 2px 6px;
+  border-radius: 4px;
 }
-
-.target-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #333;
-  margin: 0 0 8px 0;
-  text-transform: uppercase;
-  line-height: 1.2;
-}
-
-.target-desc {
-  font-size: 14px;
-  color: #666;
-  line-height: 1.5;
-  margin: 0;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-}
-
-/* Card 3 Header Styling */
-.card-3 .card-header {
-  background-color: #F49C2C;
-  color: white;
-  padding: 15px 20px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  border-radius: 8px 8px 0 0;
-}
-
-.card-3 .card-title {
-  padding: 0 20px;
-  margin-top: 20px;
-  color: #333;
-}
-
-.card-3 ul {
-  padding: 0 40px;
-  margin-bottom: 20px;
-  color: #555;
-}
-
 
 @media (max-width: 1000px) {
   .targets-grid {
     grid-template-columns: 1fr;
-    gap: 30px;
+  }
+  .card-container > .card:nth-child(1),
+  .card-container > .card:nth-child(2),
+  .card-3 {
+    width: 100%;
   }
 }
