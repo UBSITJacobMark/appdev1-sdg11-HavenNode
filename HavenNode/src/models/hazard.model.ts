@@ -8,4 +8,20 @@ export interface LocalHazardProfile {
   timestamp: string;
 }
 
+export interface DailyForecast {
+  date: string;
+  rainSum: number;
+  probability: number;
+}
+
+export interface HourlyForecast {
+  time: string;
+  rain: number;
+}
+
+export interface ForecastState {
+  daily: DailyForecast[];
+  todayHourly: HourlyForecast[];
+}
+
 export type RiskLevel = 'Normal' | 'Elevated' | 'High' | 'Critical';

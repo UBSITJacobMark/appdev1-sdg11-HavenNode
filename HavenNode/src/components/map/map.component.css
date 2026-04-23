@@ -5,7 +5,10 @@
   min-height: 500px; /* Base height fallback */
   background-color: #e9ecef; /* Placeholder color before tiles load */
 }
-
+:host {
+  display: block;
+  height: 100%;
+}
 .map-container {
   position: absolute;
   top: 0;
