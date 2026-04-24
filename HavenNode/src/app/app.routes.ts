@@ -6,6 +6,7 @@ import { NotFoundComponent } from '../pages/not-found/not-found'; // ✅ Match c
 import { About } from '../pages/about/about';
 import { Login } from '../pages/login/login'; 
 import { Register } from '../pages/register/register';
+import { Contact } from '../pages/contact/contact';
 
 export const routes: Routes = [
     {path: 'about', component: About},
@@ -13,6 +14,7 @@ export const routes: Routes = [
     { path: '', component: HomeComponent },
     { path: 'login', component: Login }, 
     { path: 'register', component: Register},
+    { path: 'contact', component: Contact },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'dashboard/:id', component: NodeDetailComponent }, // ✅ Required URL parameter [cite: 49]
     { path: '**', component: NotFoundComponent } // ✅ Required wildcard route [cite: 50]
