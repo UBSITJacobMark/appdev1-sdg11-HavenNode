@@ -17,8 +17,8 @@ export const routes: Routes = [
     { path: 'register', component: Register},
     { path: 'contact', component: Contact },
     { path: 'dashboard', component: DashboardComponent },
-    { path: 'dashboard/:id', component: NodeDetailComponent }, // ✅ Required URL parameter [cite: 49]
+    { path: 'dashboard/:id', component: NodeDetailComponent },
     { path: '', component: HomeComponent },
-    { path: '**', component: NotFoundComponent } // ✅ Required wildcard route [cite: 50]
+    { path: '**', component: NotFoundComponent }
     
   ];
