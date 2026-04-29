@@ -1,14 +1,35 @@
 # HavenNode
 
+## 👥 Group Members & Roles
+* **Project Lead:** Jacob, Mark Lloyd U. (Architecture, Routing, PR Reviews)
+* **UI Developer:** Sabela, Vin Chrysler S. (Component Design, Bootswatch Integration)
+* **Data Engineer:** Escuadra, Shawn Kirby C. (API Integration, Models, Services)
+
+## 📍 Project Scope: HavenNode (Benguet)
+HavenNode is a disaster preparedness and community resource platform specifically focused on the **Benguet** region. It utilizes **Project NOAH** data and **OpenStreetMap** to provide localized hazard monitoring and resource mapping. 
+*Note: Includes the possibility for the addition of the OpenWeatherApp API in the future.*
+
+## 🔌 External APIs & Data Sources
+The Geospatial Hazard Intelligence System (GHIS) dashboard actively integrates the following live services:
+* **Open-Meteo (ECMWF IFS 0.4° Model):** Acts as the core meteorological intelligence engine. It provides high-resolution live telemetry (temperature, humidity, surface pressure) and the U/V vector data used to render the GPU-accelerated wind flow simulation.
+* **RainViewer API:** Supplies the live weather radar map tiles by aggregating data from global Doppler radar scans into seamless raster overlays.
+* **OpenFreeMap:** Serves the foundational, open-source geographic base map and styling (`liberty` style) over MapLibre GL JS.
+* **Flaticon:** Sourced for specific vector UI assets (e.g., wind direction arrows), backed by native text-character fallbacks to ensure CORS resilience.
+
+## 🎯 SDG Choice
+**SDG 11: Sustainable Cities and Communities** - Specifically targeting disaster resilience and sustainable urban planning in the local Cordillera context.
+
+---
+
 This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.7.
 
 ## Development server
 
 To start a local development server, run:
 
-```bash
+\`\`\`bash
 ng serve
-```
+\`\`\`
 
 Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
@@ -16,23 +37,23 @@ Once the server is running, open your browser and navigate to `http://localhost:
 
 Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
 
-```bash
+\`\`\`bash
 ng generate component component-name
-```
+\`\`\`
 
 For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
 
-```bash
+\`\`\`bash
 ng generate --help
-```
+\`\`\`
 
 ## Building
 
 To build the project run:
 
-```bash
+\`\`\`bash
 ng build
-```
+\`\`\`
 
 This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
 
@@ -40,30 +61,20 @@ This will compile your project and store the build artifacts in the `dist/` dire
 
 To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
 
-```bash
+\`\`\`bash
 ng test
-```
+\`\`\`
 
 ## Running end-to-end tests
 
 For end-to-end (e2e) testing, run:
 
-```bash
+\`\`\`bash
 ng e2e
-```
+\`\`\`
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
 ## Additional Resources
 
 For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
-
-
-## Group Members and  SDG Choice:
-Escuadra, Shawn Kirby C.
-
-Jacob, Mark Lloyd U.
-
-Sabela, Vin Chrysler S.
-
-SDG Choice - SDG11 Sustainable Cities & Communities
