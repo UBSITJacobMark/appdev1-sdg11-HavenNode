@@ -1,1 +1,25 @@
-<p>dashboard works!</p>
+<app-map></app-map>
+<main class="container mt-4">
+    <div class="row" *ngIf="sensors$ | async as sensors; else loading">
+      <div class="col-md-4" *ngFor="let sensor of sensors">
+        <div class="card border-info mb-3">
+          <div class="card-header">{{ sensor.hazardType }}</div>
+          
+          <div class="card-body">
+            <h4 class="card-title">{{ sensor.municipality }}</h4>
+            
+            <p class="card-text">Risk Level: <strong>{{ sensor.severity }}</strong></p>
+            
+            <p class="text-muted">Last Updated: {{ sensor.lastUpdated | date:'short' }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+    <ng-template #loading>
+      <div class="text-center mt-5">
+        <div class="spinner-border text-info" role="status"></div>
+        <p>Fetching Benguet hazard data...</p>
+      </div>
+    </ng-template>
+  </main>

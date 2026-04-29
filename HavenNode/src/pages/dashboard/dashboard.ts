@@ -1,9 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { NoahService } from '../../services/noah.service';
+import { MapComponent } from '../../components/map/map.component';
 
 @Component({
   selector: 'app-dashboard',
-  imports: [],
+  standalone: true,
+  imports: [CommonModule, MapComponent],
   templateUrl: './dashboard.html',
-  styleUrl: './dashboard.css',
+  styleUrls: ['./dashboard.css']
 })
-export class Dashboard {}
+export class DashboardComponent {
+  private noahService = inject(NoahService);
+  
+  // ✅ Observable for the async pipe
+  sensors$ = this.noahService.getBenguetSensors();
+  
+  // Access the signal from the service
+  currentCity = this.noahService.selectedLocation;
+
+  updateLocation(newLoc: string) {
+    this.noahService.selectedLocation.set(newLoc); // ✅ Updating a Signal
+  }
+}
