@@ -17,6 +17,7 @@ export const routes: Routes = [
     { path: 'contact', component: Contact },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'dashboard/:id', component: NodeDetailComponent }, // ✅ Required URL parameter [cite: 49]
+    { path: '', component: Home },
     { path: '**', component: NotFoundComponent } // ✅ Required wildcard route [cite: 50]
     
   ];
