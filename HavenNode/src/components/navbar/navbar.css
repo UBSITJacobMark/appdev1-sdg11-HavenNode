@@ -1,0 +1,14 @@
+
+.nav-icon {
+  width: 20px;  
+  height: 25px; 
+  margin-right: 8px; 
+  object-fit: contain; 
+  
+  filter: brightness(0) invert(1); 
+}
+
+.nav-link {
+  display: flex !important;
+  align-items: center;
+}
