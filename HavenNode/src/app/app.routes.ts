@@ -9,14 +9,5 @@ import { Contact } from '../pages/contact/contact';
 
 
 export const routes: Routes = [
-    {path: 'about', component: About},
-
-    { path: '', component: HomeComponent },
-    { path: 'login', component: Login }, 
-    { path: 'register', component: Register},
-    { path: 'contact', component: Contact },
-    { path: 'dashboard', component: DashboardComponent },
-    { path: '', component: HomeComponent },
-    { path: '**', component: NotFoundComponent }
-    
-  ];
+    {path: 'about', component: About}
+];
