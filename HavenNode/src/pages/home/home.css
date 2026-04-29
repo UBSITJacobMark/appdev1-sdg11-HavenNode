@@ -8,9 +8,9 @@
   flex-wrap: wrap;
   min-height: 100vh;
   position: relative;
-  background-image: url('../../assets/background-image.jpg');
-  background-size: 100% 103vh; 
-  background-position: center -80px;
+  background-image: url('../../assets/background1.jpg');
+  background-size: 100% 115vh; 
+  background-position: center -15vh;
   background-repeat: no-repeat;
   background-attachment: scroll;
 }
@@ -22,7 +22,7 @@
   width: 50rem;         /* CHANGE SIZE HERE */
   margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
   margin-left: 0px;     /* CHANGE HORIZONTAL LOCATION */
-  margin-right: 20rem;    /* CHANGE HORIZONTAL LOCATION */
+  margin-right: 10rem;    /* CHANGE HORIZONTAL LOCATION */
   
 }
 /* Header of card 1 (SDG 11) */
@@ -55,7 +55,7 @@
   width: 100%;
   height: 20rem;
   object-fit: contain;
-  background: #f49c2c; 
+  background: rgb(230, 230, 230)
 }
 
 /* =========================================
@@ -94,9 +94,9 @@
   100% { left: 110%; transform: scaleX(1); }
 }
 /* --- INDIVIDUAL TRACK POSITIONS --- */
-.track-1 { top: 51rem; } /* Your Original Position */
-.track-2 { top: 52.5rem; } /* New Car 2 Position */
-.track-3 { top: 54rem; } /* New Car 3 Position */
+.track-1 { top: 47rem; } /* Your Original Position */
+.track-2 { top: 48rem; } /* New Car 2 Position */
+.track-3 { top: 49.5rem; } /* New Car 3 Position */
 
 /* --- CAR SETTINGS --- */
 
@@ -146,7 +146,7 @@
 .card-container > .card:nth-child(2) {
   width: 30rem;         /* CHANGE SIZE HERE */
   margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
-  margin-left: 15rem;     /* CHANGE HORIZONTAL LOCATION */
+  margin-left: 0rem;     /* CHANGE HORIZONTAL LOCATION */
 }
 
 /* Specific styles for Card 2 (Separated Header Look) */
@@ -164,7 +164,7 @@
 }
 
 .project-card .card-body {
-  background: rgba(255, 255, 255, 0.9);
+  background: rgb(255, 255, 255, 0.9);
   border-radius: 12px;
   border: 1px solid #ddd;
   backdrop-filter: blur(8px);
@@ -202,7 +202,7 @@
 }
 
 .card-header {
-  background: #F49C2C;
+  background: #2780e3;
   color: white;
   padding: 15px;
   font-size: 20px;
@@ -459,12 +459,12 @@
 /* --- MOBILE TWEAKS --- */
 @media (max-width: 900px) {
   .footer-content {
-    flex-direction: column; /* Stack vertically for phones */
+    flex-direction: column; 
     text-align: center;
   }
   
   .footer-sdg-picture {
-    flex: 0 0 8rem; /* Make it a bit smaller on mobile */
+    flex: 0 0 8rem;
     margin-bottom: 1.5rem;
   }
 }
