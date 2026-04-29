@@ -1,6 +1,6 @@
 import { Injectable, signal, computed } from '@angular/core';
 
-export type HazardType = 'none' | 'flood' | 'precipitation' | 'wind' | 'temperature';
+export type HazardType = 'none' | 'flood' | 'precipitation' | 'wind' | 'temperature' | 'flood-5y' | 'flood-25y' | 'flood-100y' | 'landslide';
 
 // 1. Upgraded Data Model (Real Environmental Inputs)
 export interface HazardState {

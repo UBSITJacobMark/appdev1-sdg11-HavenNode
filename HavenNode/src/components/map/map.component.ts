@@ -178,6 +178,32 @@ export class MapComponent implements AfterViewInit, OnDestroy {
     }, beforeId);
   }
 
+  // --- PROJECT NOAH POLYGON LAYERS ---
+
+  public addPolygonLayer(id: string, url: string, fillColor: string) {
+    if (!this.map || !this.isReady()) return;
+    this.clearHazardLayers(); // Wipe previous layers
+    
+    const sourceId = `${id}-src`;
+    const beforeId = this.getLabelLayerId(); // Keeps city names on top of the flood water
+
+    this.map.addSource(sourceId, {
+      type: 'geojson',
+      data: url
+    });
+
+    this.map.addLayer({
+      id: id,
+      type: 'fill',
+      source: sourceId,
+      paint: {
+        'fill-color': fillColor,
+        'fill-opacity': 0.6,
+        'fill-outline-color': '#000000'
+      }
+    }, beforeId);
+  }
+
   // --- RASTER & HEATMAP LAYERS ---
 
   public addHeatmapLayer(id: string, data: any) {
@@ -219,8 +245,8 @@ export class MapComponent implements AfterViewInit, OnDestroy {
   public clearHazardLayers() {
     if (!this.map) return;
     
-    // Explicitly added 'wind-arrows' to the cleanup target array
-    const layers = ['temp-layer', 'wind-layer', 'radar-layer', 'temp-heat', 'wind-heat', 'wind-arrows'];
+    // Added 'noah-layer' to the cleanup array
+    const layers = ['temp-layer', 'wind-layer', 'radar-layer', 'temp-heat', 'wind-heat', 'wind-arrows', 'noah-layer'];
     layers.forEach(l => {
       if (this.map.getLayer(l)) this.map.removeLayer(l);
       if (this.map.getSource(`${l}-src`)) this.map.removeSource(`${l}-src`);
