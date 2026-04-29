@@ -8,6 +8,7 @@ import { Login } from '../pages/login/login';
 import { Register } from '../pages/register/register';
 import { Contact } from '../pages/contact/contact';
 
+
 export const routes: Routes = [
     {path: 'about', component: About},
 
@@ -17,7 +18,7 @@ export const routes: Routes = [
     { path: 'contact', component: Contact },
     { path: 'dashboard', component: DashboardComponent },
     { path: 'dashboard/:id', component: NodeDetailComponent }, // ✅ Required URL parameter [cite: 49]
-    { path: '', component: Home },
+    { path: '', component: HomeComponent },
     { path: '**', component: NotFoundComponent } // ✅ Required wildcard route [cite: 50]
     
   ];

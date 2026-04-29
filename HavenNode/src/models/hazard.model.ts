@@ -1,6 +1,6 @@
 export interface Hazard {
     id: number;
-    municipality: string; // e.g., "Baguio", "La Trinidad", "Itogon"
+    municipality: string;
     hazardType: 'Flood' | 'Landslide' | 'Storm Surge';
     severity: 'Low' | 'Medium' | 'High';
     coordinates: {
