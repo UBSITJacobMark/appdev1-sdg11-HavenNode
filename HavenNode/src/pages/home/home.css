@@ -1,0 +1,470 @@
+
+.card-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem; 
+  padding: 40px;
+  flex-wrap: wrap;
+  min-height: 100vh;
+  position: relative;
+  background-image: url('../../assets/background-image.jpg');
+  background-size: 100% 103vh; 
+  background-position: center -80px;
+  background-repeat: no-repeat;
+  background-attachment: scroll;
+}
+
+/* =========================================
+   2. CARD 1 (SDG 11 INFO)
+   ========================================= */
+.card-container > .card:nth-child(1) {
+  width: 50rem;         /* CHANGE SIZE HERE */
+  margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
+  margin-left: 0px;     /* CHANGE HORIZONTAL LOCATION */
+  margin-right: 20rem;    /* CHANGE HORIZONTAL LOCATION */
+  
+}
+/* Header of card 1 (SDG 11) */
+.card-container > .card:nth-child(1) .card-header {
+  border-bottom: none;          /* Removes any bottom border */
+  border-bottom-left-radius: 0;  /* Makes the bottom corners square */
+  border-bottom-right-radius: 0; /* Makes the bottom corners square */
+  margin-bottom: 0;             /* Ensures no gap below the header */
+  font-family: 'Impact', charcoal, sans-serif; /* Example of a bold font */
+  letter-spacing: 1px;
+
+}
+
+/* Text of card 1 */
+.card-container > .card:nth-child(1) .card-body {
+  font-family: 'Georgia', serif; /* Example of a professional serif font */
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #333;
+  padding-top: 1rem; 
+  
+  padding-bottom: 0rem;
+}
+.card-container > .card:nth-child(1) .card-body:first-of-type {
+  padding: 0;
+  display: none;
+  
+}
+.card:nth-child(1) img {
+  width: 100%;
+  height: 20rem;
+  object-fit: contain;
+  background: #f49c2c; 
+}
+
+/* =========================================
+   CAR ANIMATION
+   ========================================= */
+
+/* Shared Track Styles */
+.animation-track {
+  position: absolute;
+  width: 92%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.car {
+  font-size: 50px;
+  position: absolute;
+  white-space: nowrap;
+}
+.plane-track {
+  position: absolute;
+  width: 100%;
+  top: 10%; /* High in the sky */
+  pointer-events: none;
+  z-index: 0;
+}
+
+.plane {
+  font-size: 30px;
+  position: absolute;
+  animation: fly-across 25s linear infinite; /* Slower than cars */
+}
+
+@keyframes fly-across {
+  0% { left: -10%; transform: scaleX(1); }
+  100% { left: 110%; transform: scaleX(1); }
+}
+/* --- INDIVIDUAL TRACK POSITIONS --- */
+.track-1 { top: 51rem; } /* Your Original Position */
+.track-2 { top: 52.5rem; } /* New Car 2 Position */
+.track-3 { top: 54rem; } /* New Car 3 Position */
+
+/* --- CAR SETTINGS --- */
+
+/* Car 1: Your Original (Moves Right, Faces Left) */
+.car-1 {
+  animation: drive-right 10s linear infinite;
+}
+
+/* Car 2: Moves Left, Faces Left */
+.car-2 {
+  animation: drive-left 8s linear infinite;
+}
+
+/* Car 3: Moves Right, Faces Right */
+.car-3 {
+  animation: drive-right 12s linear infinite;
+}
+
+/* --- ANIMATIONS --- */
+
+@keyframes drive-right {
+  0% {
+    left: -100px;
+    transform: scaleX(-1); /* Faces Left by default based on your code */
+  }
+  100% {
+    left: 100%;
+    transform: scaleX(-1);
+  }
+}
+
+@keyframes drive-left {
+  0% {
+    right: -100px;
+    transform: scaleX(1); /* Faces Left naturally */
+  }
+  100% {
+    right: 100%;
+    transform: scaleX(1);
+  }
+}
+
+
+/* =========================================
+   3. CARD 2 (PROJECT SCOPE / HAVENNODE)
+   ========================================= */
+.card-container > .card:nth-child(2) {
+  width: 30rem;         /* CHANGE SIZE HERE */
+  margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
+  margin-left: 15rem;     /* CHANGE HORIZONTAL LOCATION */
+}
+
+/* Specific styles for Card 2 (Separated Header Look) */
+.project-card {
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  gap: 12px;
+}
+
+.project-card .card-header {
+  width: 100%; 
+  border-radius: 8px;
+  box-sizing: border-box;
+}
+
+.project-card .card-body {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  backdrop-filter: blur(8px);
+}
+
+/* =========================================
+   4. CARD 3 (THE TARGETS GRID)
+   ========================================= */
+.card-3 {
+  width: 80rem;         /* CHANGE SIZE HERE */
+  margin-top: 10rem;     /* CHANGE VERTICAL LOCATION */
+  border-top: 10px solid #F49C2C; /* Fixed the giant 20rem border */
+}
+
+.targets-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); 
+  gap: 30px; 
+  padding: 20px;
+}
+
+/* =========================================
+   5. SHARED STYLES (DO NOT NEED TO EDIT OFTEN)
+   ========================================= */
+.card {
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  overflow: hidden;
+  font-family: Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  z-index: 1;
+}
+
+.card-header {
+  background: #F49C2C;
+  color: white;
+  padding: 15px;
+  font-size: 20px;
+}
+
+.target-item { display: flex; gap: 15px; }
+.target-icon-small { width: 100px; height: auto; transition: transform 0.3s ease; }
+.target-icon-small:hover { transform: scale(1.1); }
+.tech-spec span { font-family: 'Courier New', monospace; background: #222; color: #4CAF50; padding: 2px 6px; border-radius: 4px; }
+
+@media (max-width: 1000px) {
+  .targets-grid { grid-template-columns: 1fr; }
+  .card-container > .card:nth-child(1),
+  .card-container > .card:nth-child(2),
+  .card-3 { width: 100%; }
+}
+
+
+
+/* =========================================
+   DETAILED PREPAREDNESS ROADMAP
+   ========================================= */
+
+.prep-roadmap {
+    margin-top: 2rem;
+    width: 100%; /* Ensures it spans the full width of the card */
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #ddd;
+    
+    /* 1. THE FULL BACKGROUND IMAGE */
+    background-image: url(https://campsites.ph/uploads/provinces/location-benguet-9d4d9bf0365415b949236fd44054200e.jpg); 
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+    /* This creates the 'clear' center area while showing the image on sides */
+    padding: 2rem 0; /* Vertical padding only */
+}
+
+/* 2. THE NEW CLEAR HEADER */
+.prep-roadmap h5 {
+    background: #005a32; /* Solid Benguet Green */
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin: 0 auto 2rem auto;
+    width: 90%;
+    border-radius: 8px;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 5;
+}
+
+/* 3. FIXING THE TEXT AREA (The "Spotlight") */
+.phase-section {
+    width: 85%; /* This leaves 7.5% of the image visible on each side */
+    margin: 0 auto 1.5rem auto;
+    background: rgba(255, 255, 255, 0.95); /* Nearly solid white for text clarity */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    position: relative;
+    z-index: 2;
+}
+/* Optional: Add a subtle glow to the section to make it pop */ 
+.prep-roadmap:hover {
+    box-shadow: 0 5px 15px rgba(0, 90, 50, 0.1);
+    transition: 0.3s ease;
+}
+
+.phase-section {
+    margin-bottom: 1.5rem;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.phase-header {
+    padding: 0.8rem 1.2rem;
+    font-weight: bold;
+    color: white;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+}
+
+/* Color Coding for Phases */
+.phase-header.before { background-color: #2e7d32; } /* Green for Ready */
+.phase-header.during { background-color: #d32f2f; } /* Red for Action */
+.phase-header.after { background-color: #0288d1; }  /* Blue for Recovery */
+
+.phase-list {
+    padding: 1.2rem 1.2rem 1.2rem 2.5rem;
+    margin: 0;
+    font-size: 0.9rem;
+    background: #fff;
+    color: #333;
+}
+
+.phase-list li {
+    margin-bottom: 0.7rem;
+    line-height: 1.5;
+}
+
+.phase-list strong {
+    color: #111;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   BENGUET DISASTER HUB CARD
+   ========================================= */
+.card.benguet-hub {
+  /* REMOVE absolute positioning if you had it */
+  position: relative; 
+  width: 92%;         /* Matches the width of your other cards */
+  max-width: 1200px;  /* Keeps it from getting too wide on big screens */
+  margin: 0 auto;     /* Centers it */
+  z-index: 2;         /* Ensures it stays above the car tracks */
+  
+  /* Styling to match your screenshot */
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+  overflow: hidden;
+}
+
+.benguet-hub .card-header {
+    background-color: #005a32; /* Deep Benguet Green */
+    color: white;
+    font-family: 'Impact', sans-serif;
+    padding: 1rem 1.5rem;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+}
+
+.benguet-hub .card-body h5 {
+    color: #005a32;
+    border-bottom: 2px solid #005a32;
+    padding-bottom: 5px;
+    margin-top: 1.5rem;
+    font-family: 'Segoe UI', sans-serif;
+    font-weight: bold;
+}
+
+.emergency-links {
+    background: #f0fdf4;
+    border: 1px dashed #005a32;
+    padding: 1rem;
+    margin: 1rem 0;
+    border-radius: 5px;
+}
+
+.link-item {
+    font-weight: 600;
+    font-size: 0.9rem;
+    color: #1a2e05;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* =========================================
+   UPDATED FOOTER STYLES (WITH IMAGE)
+   ========================================= */
+
+.site-footer {
+  background-color: #111; /* Keep the dark background from your image */
+  color: #fff;
+  padding: 4rem 1rem; /* Increased padding for breathing room */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Standard BSIT font choice */
+  width: 100%;
+
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center; /* Centers all columns */
+  align-items: center;    /* Keeps picture and text aligned vertically */
+  flex-wrap: wrap;        /* Responsive stacking on mobile */
+  gap: 3rem;              /* Space between the picture and the columns */
+}
+
+/* --- THE PICTURE STYLING --- */
+.footer-sdg-picture {
+  flex: 0 0 10rem; /* Fixed width: image won't stretch or shrink too much */
+}
+
+.footer-sdg-picture img {
+  width: 100%;      /* Image will fill the 10rem width */
+  height: auto;
+  display: block;
+}
+
+/* --- THE TEXT SECTIONS --- */
+.footer-section {
+  flex: 1; /* Standard BSIT behavior: columns share space evenly */
+  min-width: 250px; /* Prevents columns from getting too narrow */
+}
+
+.footer-section h4 {
+  color: #F99D26; /* That specific SDG orange */
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  letter-spacing: 1px;
+}
+
+.footer-section p {
+  color: #bbb; /* Muted gray text, just like your image */
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+/* --- MOBILE TWEAKS --- */
+@media (max-width: 900px) {
+  .footer-content {
+    flex-direction: column; /* Stack vertically for phones */
+    text-align: center;
+  }
+  
+  .footer-sdg-picture {
+    flex: 0 0 8rem; /* Make it a bit smaller on mobile */
+    margin-bottom: 1.5rem;
+  }
+}
