@@ -144,7 +144,7 @@
    3. CARD 2 (PROJECT SCOPE / HAVENNODE)
    ========================================= */
 .card-container > .card:nth-child(2) {
-  width: 30rem;         /* CHANGE SIZE HERE */
+  width: 26rem;         /* CHANGE SIZE HERE */
   margin-top: 0px;      /* CHANGE VERTICAL LOCATION */
   margin-left: 15rem;     /* CHANGE HORIZONTAL LOCATION */
 }
