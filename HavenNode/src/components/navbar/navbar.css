@@ -1,14 +1,22 @@
-
+/* Ensure icons are uniform in size */
 .nav-icon {
-  width: 20px;  
-  height: 25px; 
-  margin-right: 8px; 
-  object-fit: contain; 
-  
-  filter: brightness(0) invert(1); 
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
 }
 
+/* Style for the active link */
+.nav-link.active {
+  color: #fff !important;
+  border-bottom: 2px solid #fff;
+}
+
+/* Spacing and Hover Effects */
 .nav-link {
-  display: flex !important;
-  align-items: center;
+  transition: all 0.2s ease-in-out;
+}
+
+.nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
 }
