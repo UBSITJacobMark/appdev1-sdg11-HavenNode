@@ -204,8 +204,8 @@ export class DashboardComponent implements OnInit {
       // 🌊 PROJECT NOAH GEOJSON LAYERS
       if (type === 'flood-5y') { map.addPolygonLayer('noah-layer', '/FiveYear/Benguet_Flood_5year.json', '#0dcaf0'); return; }
       if (type === 'flood-25y') { map.addPolygonLayer('noah-layer', '/25Y/Benguet_Flood_25year.json', '#0d6efd'); return; }
-      if (type === 'flood-100y') { map.addPolygonLayer('noah-layer', '/100Year/Benguet_Flood_100year.json', '#212529'); return; }
-      if (type === 'landslide') { map.addPolygonLayer('noah-layer', '/Landslide/Benguet_LandslideHazards.json', '#fd7e14'); return; }
+      if (type === 'flood-100y') { map.addPolygonLayer('noah-layer', '/100Year/Benguet_Flood_100year_small.json', '#212529'); return; }
+      if (type === 'landslide') { map.addPolygonLayer('noah-layer', '/Landslide/Benguet_LandslideHazards_small.json', '#fd7e14'); return; }
 
       // 🌡 LOCAL INTERPOLATION
       if (type === 'temperature') {
