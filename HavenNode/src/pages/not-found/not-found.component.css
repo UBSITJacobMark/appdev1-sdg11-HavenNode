@@ -1,0 +1,18 @@
+.display-1 {
+  font-size: 8rem;
+  letter-spacing: -2px;
+}
+
+.tracking-widest {
+  letter-spacing: 0.25em;
+  opacity: 0.7;
+}
+
+.min-vh-100 {
+  min-height: 80vh !important; /* Adjusted so it doesn't push the footer too far down */
+}
+
+.card {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 12px;
+}

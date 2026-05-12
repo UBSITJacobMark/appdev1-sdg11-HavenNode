@@ -1,11 +1,13 @@
-import { ApplicationConfig, provideZoneChangeDetection } from '@angular/core';
-import { provideRouter } from '@angular/router';
-import { provideHttpClient } from '@angular/common/http'; // ✅ Required for API calls
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async'; // ✅ Helps with UI rendering
+import { ApplicationConfig, provideZoneChangeDetection, provideBrowserGlobalErrorListeners} from '@angular/core';
+import { provideHttpClient } from '@angular/common/http';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { routes } from './app.routes';
+import { withComponentInputBinding, provideRouter } from '@angular/router';
 
 export const appConfig: ApplicationConfig = {
   providers: [
-    provideRouter(routes)
+    provideRouter(routes, withComponentInputBinding()),
+    provideBrowserGlobalErrorListeners(),
+    provideHttpClient()
   ]
 };
